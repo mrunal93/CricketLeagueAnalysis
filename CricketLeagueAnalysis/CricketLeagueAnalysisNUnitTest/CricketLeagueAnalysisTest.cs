@@ -145,5 +145,15 @@ namespace CricketLeagueAnalysisNUnitTest
             Assert.AreEqual("0", playerBlowingAverageForFour);
         }
 
+        [Test]
+        public void GivenIPlMostWicketCsvFile_WhenAnalysis_ShouldReturnBolwingAverageWithBestStrikingRates()
+        {
+            CricketLeagueAnalysis.CricketLeagueCsv bolwingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PAth_IPL_BOWLERS);
+            string bolwingAverageData = bolwingAverage.BowlingAverage();
+            JArray jArray = JArray.Parse(bolwingAverageData);
+            string playerBlowingAverage = jArray[13]["SR"].ToString();
+            Assert.AreEqual("12", playerBlowingAverage);
+        }
+
     }
 }
