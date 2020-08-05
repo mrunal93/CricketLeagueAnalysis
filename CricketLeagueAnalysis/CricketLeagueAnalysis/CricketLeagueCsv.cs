@@ -87,5 +87,12 @@ namespace CricketLeagueAnalysis
             var ascendinglistObjectject = listObject.OrderBy(variable => variable.SR);
             return JsonConvert.SerializeObject(ascendinglistObjectject);
         }
+
+        public string BowlingBestEconomy()
+        {
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisDAOBowling>>(CsvToJSON());
+            var ascendinglistObjectject = listObject.OrderBy(variable => variable.Econ);
+            return JsonConvert.SerializeObject(ascendinglistObjectject);
+        }
     }
 }
