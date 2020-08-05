@@ -38,6 +38,7 @@ namespace CricketLeagueAnalysis
             }
             return JsonConvert.SerializeObject(listIplCensus);
         }
+        
         public string BattingAverage()
         {
             var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
@@ -45,5 +46,18 @@ namespace CricketLeagueAnalysis
             return JsonConvert.SerializeObject(descListOb);
         }
 
+        public string TopStrikingRates()
+        {
+            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var descListOb = listOb.OrderBy(x => x.SR);
+            return JsonConvert.SerializeObject(descListOb);
+        }
+
+        public string MaximumSixes()
+        {
+            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var descListOb = listOb.OrderBy(x => x.Sixs)
+            return JsonConvert.SerializeObject(descListOb);
+        }
     }
 }

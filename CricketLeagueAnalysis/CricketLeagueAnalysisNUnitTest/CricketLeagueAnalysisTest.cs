@@ -10,13 +10,23 @@ namespace CricketLeagueAnalysisNUnitTest
 
 
         [Test]
-        public void UCStateCodeDataPopulationDensity_WhenLoaded_ShouldReturnSortedResultByPopulationDensity()
+        public void GivenIPlMostRunCsvFile_WhenAnalysis_ShouldReturnBattingAverage()
         {
             CricketLeagueAnalysis.CricketLeagueCsv batttingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
             string battingAverageData = batttingAverage.BattingAverage();
             JArray jArray = JArray.Parse(battingAverageData);
-            string firstValueFromCsv = jArray[0]["Avg"].ToString();
-            Assert.AreEqual("10.1", firstValueFromCsv);
+            string firstValueFromCsv = jArray[8]["Avg"].ToString();
+            Assert.AreEqual("13.33", firstValueFromCsv);
+        }
+
+        [Test]
+        public void GivenIPlMostRunCsvFile_WhenAnalysis_ShouldReturnTopStrikingRate()
+        {
+            CricketLeagueAnalysis.CricketLeagueCsv  strikRate= new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
+            string strikRateData = strikRate.TopStrikingRates();
+            JArray jArray = JArray.Parse(strikRateData);
+            string firstValueFromCsv = jArray[10]["SR"].ToString();
+            Assert.AreEqual("113.51", firstValueFromCsv);
         }
     }
 }
