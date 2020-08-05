@@ -77,5 +77,17 @@ namespace CricketLeagueAnalysisNUnitTest
             Assert.AreEqual("204.81", firstValueFromCsv);
         }
 
+        [Test]
+        public void GivenIPlMostRunCsvFile_WhenAnalysis_ShouldReturnPlayerAerageAndHisStrikRate()
+        {
+            CricketLeagueAnalysis.CricketLeagueCsv batttingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
+            string battingAverageData = batttingAverage.BattingAverage();
+            JArray jArray = JArray.Parse(battingAverageData);
+            string firstValueFromCsv = jArray[0]["Avg"].ToString();
+            string playerStrikingRates = jArray[0]["SR"].ToString();
+            Assert.AreEqual("83.2", firstValueFromCsv);
+            Assert.AreEqual("134.62", playerStrikingRates);
+        }
+
     }
 }
