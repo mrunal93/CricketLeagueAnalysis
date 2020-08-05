@@ -115,20 +115,35 @@ namespace CricketLeagueAnalysisNUnitTest
         public void GivenIPlMostWicketCsvFile_WhenAnalysis_ShouldReturnBolwingStrikingRate()
         {
             CricketLeagueAnalysis.CricketLeagueCsv bolwingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PAth_IPL_BOWLERS);
-            string bolwingAverageData = bolwingAverage.BowlingAverage();
+            string bolwingAverageData = bolwingAverage.BowlingTopStrikingRate();
             JArray jArray = JArray.Parse(bolwingAverageData);
             string playerBlowingAverage = jArray[13]["SR"].ToString();
-            Assert.AreEqual("12", playerBlowingAverage);
+            Assert.AreEqual("8.66", playerBlowingAverage);
         }
 
         [Test]
         public void GivenIPlMostWicketCsvFile_WhenAnalysis_ShouldReturnBolwingBestEconomy()
         {
             CricketLeagueAnalysis.CricketLeagueCsv bolwingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PAth_IPL_BOWLERS);
-            string bolwingAverageData = bolwingAverage.BowlingAverage();
+            string bolwingAverageData = bolwingAverage.BowlingBestEconomy();
             JArray jArray = JArray.Parse(bolwingAverageData);
             string playerBlowingAverage = jArray[0]["Econ"].ToString();
             Assert.AreEqual("4.8", playerBlowingAverage);
         }
+
+        [Test]
+        public void GivenIPlMostWicketCsvFile_WhenAnalysis_ShouldReturnBolwingStrikingRateWith5WicketAnd4Wicket()
+        {
+            CricketLeagueAnalysis.CricketLeagueCsv bolwingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PAth_IPL_BOWLERS);
+            string bolwingAverageData = bolwingAverage.BowlingTopStrikingRate();
+            JArray jArray = JArray.Parse(bolwingAverageData);
+            string playerBlowingAverage = jArray[13]["SR"].ToString();
+            string playerBlowingAverageForFive = jArray[13]["FiveW"].ToString();
+            string playerBlowingAverageForFour = jArray[13]["FourW"].ToString();
+            Assert.AreEqual("8.66", playerBlowingAverage);
+            Assert.AreEqual("1", playerBlowingAverageForFive);
+            Assert.AreEqual("0", playerBlowingAverageForFour);
+        }
+
     }
 }
