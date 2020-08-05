@@ -89,5 +89,16 @@ namespace CricketLeagueAnalysisNUnitTest
             Assert.AreEqual("134.62", playerStrikingRates);
         }
 
+        [Test]
+        public void GivenIPlMostRunCsvFile_WhenAnalysis_ShouldReturnPlayerMaximumRunsScoreAndHisBestAverage()
+        {
+            CricketLeagueAnalysis.CricketLeagueCsv maximumRuns = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
+            string maximumRunsData = maximumRuns.MaximumPlayerRuns();
+            JArray jArray = JArray.Parse(maximumRunsData);
+            string firstValueFromCsv = jArray[0]["Runs"].ToString();
+            string playerStrikingRates = jArray[0]["Avg"].ToString();
+            Assert.AreEqual("692", firstValueFromCsv);
+            Assert.AreEqual("69.2", playerStrikingRates);
+        }
     }
 }

@@ -41,32 +41,37 @@ namespace CricketLeagueAnalysis
         
         public string BattingAverage()
         {
-            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descendingListObject = listOb.OrderByDescending(x => x.Avg);
-            return JsonConvert.SerializeObject(descendingListObject);
+            var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var descendinglistObjectject = listObject.OrderByDescending(x => x.Avg);
+            return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string TopStrikingRates()
         {
-            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descListOb = listOb.OrderByDescending(x => x.SR);
-            return JsonConvert.SerializeObject(descListOb);
+            var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var descendinglistObjectject = listObject.OrderByDescending(x => x.SR);
+            return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string MaximumSixes()
         {
-            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descListOb = listOb.OrderByDescending(x => x.Sixs);
-            return JsonConvert.SerializeObject(descListOb);
+            var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var descendinglistObjectject = listObject.OrderByDescending(x => x.Sixs);
+            return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string MaximumFours()
         {
-            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descListOb = listOb.OrderByDescending(x => x.Fours);
-            return JsonConvert.SerializeObject(descListOb);
+            var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var descendinglistObjectject = listObject.OrderByDescending(x => x.Fours);
+            return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
-
+        public string MaximumPlayerRuns()
+        {
+            var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var descendinglistObjectject = listObject.OrderByDescending(x => x.Runs);
+            return JsonConvert.SerializeObject(descendinglistObjectject);
+        }
     }
 }
