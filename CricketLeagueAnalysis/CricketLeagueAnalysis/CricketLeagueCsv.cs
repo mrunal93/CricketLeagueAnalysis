@@ -42,36 +42,43 @@ namespace CricketLeagueAnalysis
         public string BattingAverage()
         {
             var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descendinglistObjectject = listObject.OrderByDescending(x => x.Avg);
+            var descendinglistObjectject = listObject.OrderByDescending(variable => variable.Avg);
             return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string TopStrikingRates()
         {
             var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descendinglistObjectject = listObject.OrderByDescending(x => x.SR);
+            var descendinglistObjectject = listObject.OrderByDescending(variable => variable.SR);
             return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string MaximumSixes()
         {
             var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descendinglistObjectject = listObject.OrderByDescending(x => x.Sixs);
+            var descendinglistObjectject = listObject.OrderByDescending(variable => variable.Sixs);
             return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string MaximumFours()
         {
             var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descendinglistObjectject = listObject.OrderByDescending(x => x.Fours);
+            var descendinglistObjectject = listObject.OrderByDescending(variable => variable.Fours);
             return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string MaximumPlayerRuns()
         {
             var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descendinglistObjectject = listObject.OrderByDescending(x => x.Runs);
+            var descendinglistObjectject = listObject.OrderByDescending(variable => variable.Runs);
             return JsonConvert.SerializeObject(descendinglistObjectject);
+        }
+
+        public string BowlingAverage()
+        {
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisDAOBowling>>(CsvToJSON());
+            var ascendinglistObjectject = listObject.OrderBy(variable => variable.Avg);
+            return JsonConvert.SerializeObject(ascendinglistObjectject);
         }
     }
 }
