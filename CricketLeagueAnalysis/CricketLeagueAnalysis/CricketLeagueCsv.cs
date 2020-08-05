@@ -56,7 +56,14 @@ namespace CricketLeagueAnalysis
         public string MaximumSixes()
         {
             var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descListOb = listOb.OrderBy(x => x.Sixs)
+            var descListOb = listOb.OrderByDescending(x => x.Sixs);
+            return JsonConvert.SerializeObject(descListOb);
+        }
+
+        public string MaximumFours()
+        {
+            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var descListOb = listOb.OrderByDescending(x => x.Fours);
             return JsonConvert.SerializeObject(descListOb);
         }
     }
