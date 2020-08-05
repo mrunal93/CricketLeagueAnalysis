@@ -15,8 +15,8 @@ namespace CricketLeagueAnalysisNUnitTest
             CricketLeagueAnalysis.CricketLeagueCsv batttingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
             string battingAverageData = batttingAverage.BattingAverage();
             JArray jArray = JArray.Parse(battingAverageData);
-            string firstValueFromCsv = jArray[8]["Avg"].ToString();
-            Assert.AreEqual("13.33", firstValueFromCsv);
+            string firstValueFromCsv = jArray[0]["Avg"].ToString();
+            Assert.AreEqual("83.2", firstValueFromCsv);
         }
 
         [Test]
@@ -25,8 +25,8 @@ namespace CricketLeagueAnalysisNUnitTest
             CricketLeagueAnalysis.CricketLeagueCsv  strikRate= new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
             string strikRateData = strikRate.TopStrikingRates();
             JArray jArray = JArray.Parse(strikRateData);
-            string firstValueFromCsv = jArray[10]["SR"].ToString();
-            Assert.AreEqual("113.51", firstValueFromCsv);
+            string firstValueFromCsv = jArray[0]["SR"].ToString();
+            Assert.AreEqual("333.33", firstValueFromCsv);
         }
 
         [Test]
@@ -35,10 +35,10 @@ namespace CricketLeagueAnalysisNUnitTest
             CricketLeagueAnalysis.CricketLeagueCsv maximumSix = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
             string maximumSixData = maximumSix.MaximumSixes();
             JArray jArray = JArray.Parse(maximumSixData);
-            string firstValueFromCsv = jArray[13]["Sixs"].ToString();
-            string PlayerName = jArray[2]["PLAYER"].ToString();
-
-            Assert.AreEqual("Prithvi Shaw", PlayerName);
+            string firstValueFromCsv = jArray[0]["Sixs"].ToString();
+            string PlayerName = jArray[0]["PLAYER"].ToString();
+            Assert.AreEqual("Andre Russell", PlayerName);
+            Assert.AreEqual("52", firstValueFromCsv);
         }
 
         [Test]
@@ -47,10 +47,34 @@ namespace CricketLeagueAnalysisNUnitTest
             CricketLeagueAnalysis.CricketLeagueCsv maximumfours = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
             string maximumfoursData = maximumfours.MaximumFours();
             JArray jArray = JArray.Parse(maximumfoursData);
-            string firstValueFromCsv = jArray[12]["Fours"].ToString();
+            string firstValueFromCsv = jArray[0]["Fours"].ToString();
             string PlayerName = jArray[0]["PLAYER"].ToString();
+            Assert.AreEqual("64", firstValueFromCsv);
+            Assert.AreEqual("Shikhar Dhawan", PlayerName);
+        }
 
-            Assert.AreEqual("Colin Munro", PlayerName);
+        [Test]
+        public void GivenIPlMostRunCsvFile_WhenAnalysis_ShouldReturnPlayerNameWithMaximumFoursAndhisStrikingRates()
+        {
+            CricketLeagueAnalysis.CricketLeagueCsv maximumfours = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
+            string maximumfoursData = maximumfours.MaximumFours();
+            JArray jArray = JArray.Parse(maximumfoursData);
+            string firstValueFromCsv = jArray[0]["SR"].ToString();
+            string PlayerName = jArray[0]["PLAYER"].ToString();
+            Assert.AreEqual("135.67", firstValueFromCsv);
+            Assert.AreEqual("Shikhar Dhawan", PlayerName);
+        }
+
+        [Test]
+        public void GivenIPlMostRunCsvFile_WhenAnalysis_ShouldReturnPlayerNameWithMaximumSixesAndHisStrikRate()
+        {
+            CricketLeagueAnalysis.CricketLeagueCsv maximumSix = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
+            string maximumSixData = maximumSix.MaximumSixes();
+            JArray jArray = JArray.Parse(maximumSixData);
+            string firstValueFromCsv = jArray[0]["SR"].ToString();
+            string PlayerName = jArray[0]["PLAYER"].ToString();
+            Assert.AreEqual("Andre Russell", PlayerName);
+            Assert.AreEqual("204.81", firstValueFromCsv);
         }
 
     }

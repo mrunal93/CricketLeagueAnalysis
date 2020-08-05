@@ -8,17 +8,17 @@ namespace CricketLeagueAnalysis
     {
         public string POS { get; set; }
         public string PLAYER { get; set; }
-        public string Mat { get; set; }
-        public string Inns { get; set; }
-        public string NO { get; set; }
-        public string Runs { get; set; }
+        public int Mat { get; set; }
+        public int Inns { get; set; }
+        public int NO { get; set; }
+        public int Runs { get; set; }
         public string HS { get; set; }
-        public string Avg { get; set; }
-        public string BF { get; set; }
-        public string SR { get; set; }
-        public string Hundreds { get; set; }
-        public string Fiftys { get; set; }
-        public string Fours { get; set; }
-        public string Sixs { get; set; }
+        public double Avg { get; set; }
+        public int BF { get; set; }
+        public double SR { get; set; }
+        public int Hundreds { get; set; }
+        public int Fiftys { get; set; }
+        public int Fours { get; set; }
+        public int Sixs { get; set; }
     }
 }
