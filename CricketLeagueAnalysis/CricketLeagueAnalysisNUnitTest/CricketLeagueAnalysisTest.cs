@@ -7,7 +7,7 @@ namespace CricketLeagueAnalysisNUnitTest
     public class Tests
     {
         string FILE_PATH_IPL_BATSMAN = @"C:\Users\Admin\Documents\CricketLeagueAnalysis\CricketLeagueAnalysis\CricketLeagueAnalysis\Resources\Day12 Data_01 IPL2019FactsheetMostRuns.csv";
-
+        string FILE_PAth_IPL_BOWLERS = @"C:\Users\Admin\Documents\CricketLeagueAnalysis\CricketLeagueAnalysis\CricketLeagueAnalysis\Resources\Day12 Data_02 IPL2019FactsheetMostWkts.csv";
 
         [Test]
         public void GivenIPlMostRunCsvFile_WhenAnalysis_ShouldReturnBattingAverage()
@@ -99,6 +99,16 @@ namespace CricketLeagueAnalysisNUnitTest
             string playerStrikingRates = jArray[0]["Avg"].ToString();
             Assert.AreEqual("692", firstValueFromCsv);
             Assert.AreEqual("69.2", playerStrikingRates);
+        }
+
+        [Test]
+        public void GivenIPlMostWicketCsvFile_WhenAnalysis_ShouldReturnBolwingAverage()
+        {
+            CricketLeagueAnalysis.CricketLeagueCsv bolwingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PAth_IPL_BOWLERS);
+            string bolwingAverageData = bolwingAverage.BowlingAverage();
+            JArray jArray = JArray.Parse(bolwingAverageData);
+            string playerBlowingAverage = jArray[13]["Avg"].ToString();
+            Assert.AreEqual("11", playerBlowingAverage);
         }
     }
 }
