@@ -155,5 +155,18 @@ namespace CricketLeagueAnalysisNUnitTest
             Assert.AreEqual("12", playerBlowingAverage);
         }
 
+        [Test]
+        public void GivenIPlMostWicketCsvFile_WhenAnalysis_ShouldReturnBolwingMaximumWicketsWithBestBowlingAverages()
+        {
+            CricketLeagueAnalysis.CricketLeagueCsv bolwingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PAth_IPL_BOWLERS);
+            string bolwingAverageData = bolwingAverage.TopMaximumWickets();
+            JArray jArray = JArray.Parse(bolwingAverageData);
+            string playerMaximumWicket = jArray[0]["Wkts"].ToString();
+            string playerBowlingAverages = jArray[0]["Avg"].ToString();
+            Assert.AreEqual("26", playerMaximumWicket);
+            Assert.AreEqual("16.57", playerBowlingAverages);
+        }
+
+
     }
 }
