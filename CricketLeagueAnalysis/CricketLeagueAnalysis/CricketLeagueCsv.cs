@@ -33,7 +33,6 @@ namespace CricketLeagueAnalysis
                 var objResult = new Dictionary<string, string>();
                 for (int columns = 0; columns < properties.Length; columns++)
                     objResult.Add(properties[columns], csv[rows][columns]);
-
                 listIplCensus.Add(objResult);
             }
             return JsonConvert.SerializeObject(listIplCensus);
@@ -41,58 +40,65 @@ namespace CricketLeagueAnalysis
         
         public string BattingAverage()
         {
-            var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisBattingModel>>(CsvToJSON());
             var descendinglistObjectject = listObject.OrderByDescending(variable => variable.Avg);
             return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string TopStrikingRates()
         {
-            var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisBattingModel>>(CsvToJSON());
             var descendinglistObjectject = listObject.OrderByDescending(variable => variable.SR);
             return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string MaximumSixes()
         {
-            var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisBattingModel>>(CsvToJSON());
             var descendinglistObjectject = listObject.OrderByDescending(variable => variable.Sixs);
             return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string MaximumFours()
         {
-            var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisBattingModel>>(CsvToJSON());
             var descendinglistObjectject = listObject.OrderByDescending(variable => variable.Fours);
             return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string MaximumPlayerRuns()
         {
-            var listObject = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisBattingModel>>(CsvToJSON());
             var descendinglistObjectject = listObject.OrderByDescending(variable => variable.Runs);
             return JsonConvert.SerializeObject(descendinglistObjectject);
         }
 
         public string BowlingAverage()
         {
-            var listObject = JsonConvert.DeserializeObject<List<AnalysisDAOBowling>>(CsvToJSON());
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisBowlingModel>>(CsvToJSON());
             var ascendinglistObjectject = listObject.OrderBy(variable => variable.Avg);
             return JsonConvert.SerializeObject(ascendinglistObjectject);
         }
 
         public string BowlingTopStrikingRate()
         {
-            var listObject = JsonConvert.DeserializeObject<List<AnalysisDAOBowling>>(CsvToJSON());
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisBowlingModel>>(CsvToJSON());
             var ascendinglistObjectject = listObject.OrderBy(variable => variable.SR);
             return JsonConvert.SerializeObject(ascendinglistObjectject);
         }
 
         public string BowlingBestEconomy()
         {
-            var listObject = JsonConvert.DeserializeObject<List<AnalysisDAOBowling>>(CsvToJSON());
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisBowlingModel>>(CsvToJSON());
             var ascendinglistObjectject = listObject.OrderBy(variable => variable.Econ);
             return JsonConvert.SerializeObject(ascendinglistObjectject);
+        }
+
+        public string TopMaximumWickets()
+        {
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisBowlingModel>>(CsvToJSON());
+            var descendinglistObjectject = listObject.OrderByDescending(variable => variable.Wkts);
+            return JsonConvert.SerializeObject(descendinglistObjectject);
         }
     }
 }
