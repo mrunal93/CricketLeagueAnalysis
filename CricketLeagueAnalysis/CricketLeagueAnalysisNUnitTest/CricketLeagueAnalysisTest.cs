@@ -196,5 +196,15 @@ namespace CricketLeagueAnalysisNUnitTest
             string playerBattingAverages = jArray[0]["Avg"].ToString();
             Assert.AreEqual("1:69.2", playerMaximumHundred + ":" + playerBattingAverages);
         }
+
+        [Test]
+        public void GivenIPlMostBattingCsvFile_WhenAnalysis_ShouldReturnBattingAverageWithHundredsANdFifties()
+        {
+            CricketLeagueAnalysis.CricketLeagueCsv battingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
+            string battingAverageData = battingAverage.PlayersWithHundredsAndFifties();
+            JArray jArray = JArray.Parse(battingAverageData);
+            string playerBattingAverage = jArray[0]["Avg"].ToString();
+            Assert.AreEqual("69.2", playerBattingAverage);
+        }
     }
 }
