@@ -100,5 +100,12 @@ namespace CricketLeagueAnalysis
             var descendinglistObjectject = listObject.OrderByDescending(variable => variable.Wkts);
             return JsonConvert.SerializeObject(descendinglistObjectject);
         }
+
+        public string PlayersMaximumHundreds()
+        {
+            var listObject = JsonConvert.DeserializeObject<List<AnalysisBattingModel>>(CsvToJSON());
+            var descendinglistObjectject = listObject.OrderByDescending(variable => variable.Hundreds);
+            return JsonConvert.SerializeObject(descendinglistObjectject);
+        }
     }
 }
