@@ -163,10 +163,21 @@ namespace CricketLeagueAnalysisNUnitTest
             JArray jArray = JArray.Parse(bolwingAverageData);
             string playerMaximumWicket = jArray[0]["Wkts"].ToString();
             string playerBowlingAverages = jArray[0]["Avg"].ToString();
-            Assert.AreEqual("26", playerMaximumWicket);
-            Assert.AreEqual("16.57", playerBowlingAverages);
+            Assert.AreEqual("26:16.57", playerMaximumWicket+":" +playerBowlingAverages);
         }
 
-
+        [Test]
+        public void GivenIplMostWicketAndMostRunCsvFile_WhenAnalysis_ShouldReturnBestBattingANdBowlingAverage()
+        {
+            CricketLeagueAnalysis.CricketLeagueCsv bolwingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PAth_IPL_BOWLERS);
+            CricketLeagueAnalysis.CricketLeagueCsv battingAverage = new CricketLeagueAnalysis.CricketLeagueCsv(FILE_PATH_IPL_BATSMAN);
+            string battingAverageData = battingAverage.BattingAverage();
+            string bolwingAverageData = bolwingAverage.BowlingAverage();
+            JArray jArrayBatting = JArray.Parse(bolwingAverageData);
+            JArray jArrayBowling = JArray.Parse(battingAverageData);
+            string playerBattingAverage = jArrayBatting[13]["Avg"].ToString();
+            string playerBowlingAverages = jArrayBowling[0]["Avg"].ToString();
+            Assert.AreEqual("11:83.2", playerBattingAverage+":" +playerBowlingAverages);
+        }
     }
 }
